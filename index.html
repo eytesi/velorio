@@ -402,8 +402,7 @@
     <button class="modal-close" id="closeComments">×</button>
     <h2 class="modal-title">mensajes</h2>
     <div class="carousel-wrap" id="msgCarousel"></div>
-    <form name="mensajes" data-netlify="true" class="c-form" id="commentForm">
-      <input type="hidden" name="form-name" value="mensajes">
+    <form action="https://formspree.io/f/mgodgjnd" method="POST" class="c-form" id="commentForm">
       <input type="text" name="nombre" placeholder="tu nombre" class="c-input" required maxlength="50">
       <textarea name="mensaje" placeholder="dejá un mensaje..." class="c-textarea" required maxlength="300"></textarea>
       <button type="submit" class="c-submit">enviar</button>
