@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BLEUBOI — espero que me recuerden cuando las flores florezcan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -72,17 +72,17 @@
     }
 
     .ep-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300; font-size: 1rem; line-height: 1.55;
+      font-family: 'Sacramento', cursive;
+      font-weight: 300; font-size: 1.3rem; line-height: 1.55;
       text-align: center; color: var(--cream);
       margin-bottom: 5px; opacity: 0;
       animation: fadeUp 2.2s ease forwards 0.8s;
     }
 
     .ep-subtitle {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Sacramento', cursive;
       font-style: italic; font-weight: 300;
-      font-size: 0.75rem; color: var(--cream-dim);
+      font-size: 1rem; color: var(--cream-dim);
       letter-spacing: 0.07em; margin-bottom: 16px; opacity: 0;
       animation: fadeUp 2s ease forwards 1.1s;
     }
@@ -100,9 +100,9 @@
     }
 
     .track-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Sacramento', cursive;
       font-style: italic; font-weight: 300;
-      font-size: 1.1rem; text-align: center;
+      font-size: 1.4rem; text-align: center;
       color: var(--cream); margin-bottom: 3px;
       min-height: 1.5rem; transition: opacity 0.3s ease;
     }
@@ -190,8 +190,8 @@
       font-size: 8px; letter-spacing: 0.2em; color: var(--cream-faint);
     }
     .track-pill-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.78rem; font-style: italic; color: var(--cream-dim);
+      font-family: 'Sacramento', cursive;
+      font-size: 1rem; font-style: italic; color: var(--cream-dim);
     }
     .track-pill.active .track-pill-name { color: var(--cream); }
 
@@ -227,6 +227,103 @@
       .inner { width: 270px; padding: 0 24px; }
       .ep-title { font-size: 0.88rem; }
       .tracklist { flex-direction: column; gap: 6px; align-items: center; }
+    }
+
+    /* BOTTOM BAR */
+    .bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 10px; padding: 12px 20px 14px;
+      background: linear-gradient(to top, rgba(10,7,3,0.95) 60%, transparent);
+      font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--cream-faint);
+      opacity: 0; animation: fadeUp 2s ease forwards 2.8s;
+    }
+    .counter-wrap { display: flex; align-items: center; gap: 5px; }
+    .bar-sep { opacity: 0.4; }
+    .msg-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Crimson Text', serif;
+      font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--cream-faint); padding: 0; transition: color 0.2s;
+    }
+    .msg-btn:hover { color: var(--cream-dim); }
+
+    /* MODAL */
+    .modal {
+      position: fixed; inset: 0; z-index: 50;
+      display: flex; align-items: flex-end; justify-content: center;
+      background: rgba(5,3,1,0); pointer-events: none;
+      transition: background 0.4s ease;
+    }
+    .modal.open { background: rgba(5,3,1,0.75); pointer-events: all; }
+    .modal-panel {
+      position: relative; width: 100%; max-width: 500px;
+      background: #140f09;
+      border-top: 1px solid rgba(240,215,165,0.1);
+      border-radius: 18px 18px 0 0; padding: 28px 28px 36px;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.34,1.1,0.64,1);
+      max-height: 82vh; overflow-y: auto;
+    }
+    .modal.open .modal-panel { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; color: var(--cream-faint);
+      font-size: 1.5rem; cursor: pointer; line-height: 1;
+      transition: color 0.2s; padding: 0;
+    }
+    .modal-close:hover { color: var(--cream); }
+    .modal-title {
+      font-family: 'Sacramento', cursive; font-size: 2rem; font-weight: 400;
+      color: var(--cream); text-align: center; margin-bottom: 20px;
+    }
+    .carousel-wrap {
+      display: flex; gap: 12px; overflow-x: auto;
+      padding-bottom: 14px; margin-bottom: 20px; scrollbar-width: none;
+    }
+    .carousel-wrap::-webkit-scrollbar { display: none; }
+    .carousel-empty {
+      width: 100%; text-align: center; padding: 6px 0 18px;
+      font-family: 'Sacramento', cursive; font-size: 1.1rem;
+      color: var(--cream-faint); line-height: 1.6;
+    }
+    .msg-card {
+      flex-shrink: 0; width: 175px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(240,215,165,0.08);
+      border-radius: 8px; padding: 14px;
+    }
+    .msg-card-name {
+      font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 7px;
+    }
+    .msg-card-text {
+      font-family: 'Sacramento', cursive; font-size: 1.05rem;
+      color: var(--cream-dim); line-height: 1.55;
+    }
+    .c-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .c-input, .c-textarea {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(240,215,165,0.1); border-radius: 6px;
+      padding: 10px 14px; color: var(--cream);
+      font-family: 'Crimson Text', serif; font-size: 1rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .c-input:focus, .c-textarea:focus { border-color: rgba(240,215,165,0.28); }
+    .c-input::placeholder, .c-textarea::placeholder { color: var(--cream-faint); }
+    .c-textarea { min-height: 85px; resize: none; }
+    .c-submit {
+      align-self: flex-end; background: none;
+      border: 1px solid rgba(240,215,165,0.15); border-radius: 20px;
+      padding: 7px 24px; color: var(--cream-dim); cursor: pointer;
+      font-family: 'Sacramento', cursive; font-size: 1.2rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .c-submit:hover { border-color: rgba(240,215,165,0.35); color: var(--cream); }
+    .c-note {
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream-faint); text-align: center;
     }
   </style>
 </head>
@@ -283,6 +380,37 @@
 
   <div class="tracklist" id="tracklist"></div>
 </main>
+
+<!-- Bottom bar -->
+<div class="bottom-bar">
+  <div class="counter-wrap">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+    <span id="visitCount">—</span>
+  </div>
+  <span class="bar-sep">·</span>
+  <span>un velorio eterno · 2026</span>
+  <span class="bar-sep">·</span>
+  <button class="msg-btn" id="openComments">dejá un mensaje</button>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-panel">
+    <button class="modal-close" id="closeComments">×</button>
+    <h2 class="modal-title">mensajes</h2>
+    <div class="carousel-wrap" id="msgCarousel"></div>
+    <form name="mensajes" data-netlify="true" class="c-form" id="commentForm">
+      <input type="hidden" name="form-name" value="mensajes">
+      <input type="text" name="nombre" placeholder="tu nombre" class="c-input" required maxlength="50">
+      <textarea name="mensaje" placeholder="dejá un mensaje..." class="c-textarea" required maxlength="300"></textarea>
+      <button type="submit" class="c-submit">enviar</button>
+    </form>
+    <p class="c-note">los mensajes aparecen una vez aprobados &nbsp;🕯️</p>
+  </div>
+</div>
 
 <audio id="audio"></audio>
 
@@ -519,6 +647,45 @@ function buildScene() {
     container.appendChild(el);
   }
 }
+
+/* COUNTER */
+fetch('https://api.counterapi.dev/v1/bleuboi-velorio-2026/views/up')
+  .then(r => r.json())
+  .then(d => { document.getElementById('visitCount').textContent = d.count; })
+  .catch(() => { document.getElementById('visitCount').textContent = '✦'; });
+
+/* MODAL */
+const modal = document.getElementById('modal');
+document.getElementById('openComments').addEventListener('click', () => modal.classList.add('open'));
+document.getElementById('closeComments').addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+
+/* APPROVED COMMENTS
+   Para agregar un mensaje aprobado, añadí un objeto al array:
+   { nombre: 'Nombre', mensaje: 'El texto aprobado.' }
+*/
+const approvedMsgs = [
+  // { nombre: 'ejemplo', mensaje: 'qué hermoso esto. gracias.' },
+];
+
+const carousel = document.getElementById('msgCarousel');
+if (approvedMsgs.length === 0) {
+  carousel.innerHTML = '<p class="carousel-empty">los primeros mensajes están en camino 🕯️</p>';
+} else {
+  approvedMsgs.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'msg-card';
+    card.innerHTML = '<div class="msg-card-name">' + m.nombre + '</div><div class="msg-card-text">' + m.mensaje + '</div>';
+    carousel.appendChild(card);
+  });
+}
+
+/* FORM SUCCESS */
+document.getElementById('commentForm').addEventListener('submit', function() {
+  setTimeout(() => {
+    this.innerHTML = '<p class="carousel-empty">gracias por tu mensaje 🕯️<br>aparecerá una vez aprobado.</p>';
+  }, 200);
+});
 
 buildScene();
 </script>
